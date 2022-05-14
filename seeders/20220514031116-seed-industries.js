@@ -1,16 +1,32 @@
-const faker = require('faker');
-
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const industryList = [];
-
-    for (let i = 0; i < 30; i += 1) {
-      industryList.push({
-        industry_name: faker.Industry.industry(),
+    const industryList = [
+      {
+        industry_name: 'Technology',
         created_at: new Date(),
         updated_at: new Date(),
-      });
-    }
+      },
+      {
+        industry_name: 'Telecommunications',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        industry_name: 'Health Care',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        industry_name: 'Financials',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        industry_name: 'Consumer Discretionary',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+    ];
 
     await queryInterface.bulkInsert('industries', industryList);
   },
