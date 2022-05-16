@@ -32,6 +32,7 @@ export default function App() {
             <form>
               <input className="form-control mb-2 mr-sm-2" type="text" name="first_name" placeholder="First Name" />
               <input className="form-control mb-2 mr-sm-2" type="text" name="last_name" placeholder="Last Name" />
+              <input className="form-control mb-2 mr-sm-2" type="text" name="role" placeholder="Role" />
               <input className="form-control mb-2 mr-sm-2" type="text" name="email" placeholder="Email Address" />
               <input className="form-control mb-2 mr-sm-2" type="text" name="linkedin" placeholder="LinkedIn Address" />
               <input className="form-control mb-2 mr-sm-2" type="text" name="github_account" placeholder="Github" />
