@@ -66,9 +66,11 @@ export default function App() {
         <FormUserProfile userProfileSubmit={userProfileSubmit} />
         <FormEducation educationHistorySubmit={educationHistorySubmit} educationHistory={educationHistory} handleEducationFormChange={handleEducationFormChange} handleEducationFormAdd={handleEducationFormAdd} />
 
-        <div className="row">
+        <div className="row mt-4">
           <h1>Resume Preview</h1>
-          <ResumeSideBar userProfile={userProfile} educationHistory={educationHistory} />
+          <div className="wrapper mt-lg-5">
+            <ResumeSideBar userProfile={userProfile} educationHistory={educationHistory} />
+          </div>
         </div>
       </div>
     </div>
