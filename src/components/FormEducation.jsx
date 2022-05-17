@@ -24,12 +24,12 @@ export default function FormEducation({
             </div>
           ))}
 
-          <div className="row">
-            <button className="col-4 btn btn-secondary mb-2" type="button" onClick={handleEducationFormAdd}>Add another education entry</button>
+          <div>
+            <button className="btn btn-secondary mb-2" type="button" onClick={handleEducationFormAdd}>Add another education entry</button>
           </div>
 
-          <div className="row">
-            <button className="col-4 btn btn-secondary mb-2" type="submit">Add Education</button>
+          <div>
+            <button className="btn btn-secondary mb-2" type="submit">Add Education</button>
           </div>
         </form>
       </div>
