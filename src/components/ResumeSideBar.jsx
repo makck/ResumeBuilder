@@ -39,7 +39,7 @@ export default function ResumeSideBar({ userProfile, educationHistory }) {
         <div className="education-container container-block">
           <h2 className="container-block-title">Education</h2>
           {educationHistory.map((entry, index) => (
-            <div className="item">
+            <div key={`education-${entry.instuition}`} className="item">
               <h4 className="degree">{entry.qualification}</h4>
               <h5 className="meta">{entry.institution}</h5>
               <div className="time">{entry.year_duration}</div>
