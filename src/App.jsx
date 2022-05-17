@@ -1,6 +1,34 @@
 import React, { useState } from 'react';
 
+import ResumeUserProfile from './components/resumeUserProfile.jsx';
+
 export default function App() {
+  const [userProfile, setUserProfile] = useState({
+    first_name: 'test',
+    last_name: 'test2',
+    role: '',
+    email: '',
+    linkedin: '',
+    github_account: '',
+    mobile_number: 0,
+  });
+
+  const userProfileSubmit = (event) => {
+    event.preventDefault();
+
+    console.log(event.target);
+    setUserProfile((prev) => ({
+      ...prev,
+      first_name: event.target.first_name.value,
+      last_name: event.target.last_name.value,
+      role: event.target.role.value,
+      email: event.target.email.value,
+      linkedin: event.target.linkedin.value,
+      github_account: event.target.github_account.value,
+      mobile_number: event.target.mobile_number.value,
+    }));
+  };
+
   return (
     <div>
 
@@ -28,8 +56,8 @@ export default function App() {
         <div className="row">
           <h1 className="page-title">User Profile</h1>
 
-          <div className="form-inline">
-            <form>
+          <div>
+            <form className="form-inline" onSubmit={userProfileSubmit}>
               <input className="form-control mb-2 mr-sm-2" type="text" name="first_name" placeholder="First Name" />
               <input className="form-control mb-2 mr-sm-2" type="text" name="last_name" placeholder="Last Name" />
               <input className="form-control mb-2 mr-sm-2" type="text" name="role" placeholder="Role" />
@@ -43,83 +71,7 @@ export default function App() {
 
         </div>
 
-        <div className="row">
-          <h1>Resume Preview</h1>
-          <div className="wrapper mt-lg-5">
-            <div className="sidebar-wrapper">
-              <div className="profile-container">
-                <img className="profile" src="assets/images/profile.png" alt="" />
-                <h1 className="name">Alan Doe</h1>
-                <h3 className="tagline">Full Stack Developer</h3>
-              </div>
-
-              <div className="contact-container container-block">
-                <ul className="list-unstyled contact-list">
-                  <li className="email">
-                    <i className="fas fa-envelope" />
-                    <a href="mailto: yourname@email.com">alan.doe@website.com</a>
-                  </li>
-                  <li className="phone">
-                    <i className="fas fa-phone" />
-                    <a href="tel:0123 456 789">0123 456 789</a>
-                  </li>
-                  <li className="linkedin">
-                    <i className="fab fa-linkedin-in" />
-                    <a href="#" target="_blank">linkedin.com/in/alandoe</a>
-                  </li>
-                  <li className="github">
-                    <i className="fab fa-github" />
-                    <a href="#" target="_blank">github.com/username</a>
-                  </li>
-                </ul>
-              </div>
-              <div className="education-container container-block">
-                <h2 className="container-block-title">Education</h2>
-                <div className="item">
-                  <h4 className="degree">MSc in Computer Science</h4>
-                  <h5 className="meta">University of London</h5>
-                  <div className="time">2016 - 2018</div>
-                </div>
-                <div className="item">
-                  <h4 className="degree">BSc in Applied Mathematics</h4>
-                  <h5 className="meta">Bristol University</h5>
-                  <div className="time">2012 - 2016</div>
-                </div>
-              </div>
-
-              <div className="languages-container container-block">
-                <h2 className="container-block-title">Languages</h2>
-                <ul className="list-unstyled interests-list">
-                  <li>
-                    English
-                    {' '}
-                    <span className="lang-desc">(Native)</span>
-                  </li>
-                  <li>
-                    French
-                    {' '}
-                    <span className="lang-desc">(Professional)</span>
-                  </li>
-                  <li>
-                    Spanish
-                    {' '}
-                    <span className="lang-desc">(Professional)</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="interests-container container-block">
-                <h2 className="container-block-title">Interests</h2>
-                <ul className="list-unstyled interests-list">
-                  <li>Climbing</li>
-                  <li>Snowboarding</li>
-                  <li>Cooking</li>
-                </ul>
-              </div>
-
-            </div>
-          </div>
-        </div>
+        <ResumeUserProfile userProfile={userProfile} />
       </div>
 
     </div>
