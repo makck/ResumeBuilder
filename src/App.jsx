@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 
 import NavBar from './components/NavBar.jsx';
-import ResumeUserProfile from './components/resumeUserProfile.jsx';
+// User form components
+import FormUserProfile from './components/FormUserProfile.jsx';
+
+// Reusme rendering components
+import ResumeSideBar from './components/ResumeSideBar.jsx';
 
 export default function App() {
   const [userProfile, setUserProfile] = useState({
@@ -34,27 +38,12 @@ export default function App() {
     <div>
       <NavBar />
       <div className="container">
+        <FormUserProfile userProfileSubmit={userProfileSubmit} />
         <div className="row">
-          <h1 className="page-title">User Profile</h1>
-
-          <div>
-            <form className="form-inline" onSubmit={userProfileSubmit}>
-              <input className="form-control mb-2 mr-sm-2" type="text" name="first_name" placeholder="First Name" />
-              <input className="form-control mb-2 mr-sm-2" type="text" name="last_name" placeholder="Last Name" />
-              <input className="form-control mb-2 mr-sm-2" type="text" name="role" placeholder="Role" />
-              <input className="form-control mb-2 mr-sm-2" type="text" name="email" placeholder="Email Address" />
-              <input className="form-control mb-2 mr-sm-2" type="text" name="linkedin" placeholder="LinkedIn Address" />
-              <input className="form-control mb-2 mr-sm-2" type="text" name="github_account" placeholder="Github" />
-              <input className="form-control mb-2 mr-sm-2" type="text" name="mobile_number" placeholder="Mobile Number" />
-              <button className="btn btn-secondary mb-2" type="submit">Add Profile</button>
-            </form>
-          </div>
-
+          <h1>Resume Preview</h1>
+          <ResumeSideBar userProfile={userProfile} />
         </div>
-
-        <ResumeUserProfile userProfile={userProfile} />
       </div>
-
     </div>
   );
 }
