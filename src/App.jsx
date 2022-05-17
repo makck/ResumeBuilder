@@ -18,10 +18,14 @@ export default function App() {
     mobile_number: 0,
   });
 
+  const [educationHistory, setEducationHistory] = useState([{
+    qualification: '',
+    institution: '',
+    year_duration: '',
+  }]);
+
   const userProfileSubmit = (event) => {
     event.preventDefault();
-
-    console.log(event.target);
     setUserProfile((prev) => ({
       ...prev,
       first_name: event.target.first_name.value,
@@ -34,11 +38,64 @@ export default function App() {
     }));
   };
 
+  const handleEducationFormAdd = () => {
+    setEducationHistory([...educationHistory, {
+      qualification: '',
+      institution: '',
+      year_duration: '',
+    }]);
+  };
+
+  const handleEducationFormChange = (event, index) => {
+    const { name, value } = event.target;
+    const list = [...educationHistory];
+    list[index][name] = value;
+    setEducationHistory(list);
+  };
+
+  const educationHistorySubmit = (event) => {
+    event.preventDefault();
+    setEducationHistory([...educationHistory]);
+  };
+
   return (
     <div>
       <NavBar />
       <div className="container">
         <FormUserProfile userProfileSubmit={userProfileSubmit} />
+
+        <div className="row">
+          <h1 className="page-title">Education</h1>
+
+          <div>
+            <form className="form-inline" onSubmit={educationHistorySubmit}>
+
+              {educationHistory.map((entry, index) => (
+                <div key={`education-${index}`} className="row mb-3">
+                  <div className="col">
+                    <input className="form-control" name="qualification" type="text" placeholder="Qualification" onChange={(event) => handleEducationFormChange(event, index)} />
+                  </div>
+                  <div className="col">
+                    <input className="form-control" name="institution" type="text" placeholder="Institution" onChange={(event) => handleEducationFormChange(event, index)} />
+                  </div>
+                  <div className="col">
+                    <input className="form-control" name="year_duration" type="text" placeholder="Year Duration" onChange={(event) => handleEducationFormChange(event, index)} />
+                  </div>
+                </div>
+              ))}
+
+              <div className="row">
+                <button className="col-4 btn btn-secondary mb-2" type="button" onClick={handleEducationFormAdd}>Add another education entry</button>
+              </div>
+
+              <div className="row">
+                <button className="col-4 btn btn-secondary mb-2" type="submit">Add Education</button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+
         <div className="row">
           <h1>Resume Preview</h1>
           <ResumeSideBar userProfile={userProfile} />
