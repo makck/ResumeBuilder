@@ -98,7 +98,7 @@ export default function App() {
 
         <div className="row">
           <h1>Resume Preview</h1>
-          <ResumeSideBar userProfile={userProfile} />
+          <ResumeSideBar userProfile={userProfile} educationHistory={educationHistory} />
         </div>
       </div>
     </div>

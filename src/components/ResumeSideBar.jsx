@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ResumeSideBar({ userProfile }) {
+export default function ResumeSideBar({ userProfile, educationHistory }) {
   return (
 
     <div className="wrapper mt-lg-5">
@@ -35,6 +35,18 @@ export default function ResumeSideBar({ userProfile }) {
             </li>
           </ul>
         </div>
+
+        <div className="education-container container-block">
+          <h2 className="container-block-title">Education</h2>
+          {educationHistory.map((entry, index) => (
+            <div className="item">
+              <h4 className="degree">{entry.qualification}</h4>
+              <h5 className="meta">{entry.institution}</h5>
+              <div className="time">{entry.year_duration}</div>
+            </div>
+          ))}
+        </div>
+
       </div>
     </div>
   );
