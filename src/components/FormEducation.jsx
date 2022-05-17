@@ -4,7 +4,7 @@ export default function FormEducation({
   educationHistorySubmit, educationHistory, handleEducationFormChange, handleEducationFormAdd,
 }) {
   return (
-    <div className="row">
+    <div className="row mt-4">
       <h1 className="page-title">Education</h1>
 
       <div>

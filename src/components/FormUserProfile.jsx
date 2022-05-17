@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function UserProfileForm({ userProfileSubmit }) {
   return (
-    <div className="row">
+    <div className="row mt-4">
       <h1 className="page-title">User Profile</h1>
 
       <div>
