@@ -5,9 +5,11 @@ import NavBar from './components/NavBar.jsx';
 import FormUserProfile from './components/FormUserProfile.jsx';
 import FormEducation from './components/FormEducation.jsx';
 import FormCareerSummary from './components/FormCareerSummary.jsx';
+import FormExperience from './components/FormExperience.jsx';
 
 // Reusme rendering components
 import ResumeSideBar from './components/ResumeSideBar.jsx';
+import ResumeMainSection from './components/ResumeMainSection.jsx';
 
 export default function App() {
   // User Profile
@@ -73,6 +75,30 @@ export default function App() {
     setCareerSummary(tempString);
   };
 
+  // Job Experience
+  const [jobExperience, setJobExperience] = useState([{
+    job_title: '',
+    location: '',
+    job_year_duration: '',
+    highlights: '',
+  }]);
+
+  const handleJobFormAdd = () => {
+    setJobExperience([...jobExperience, {
+      job_title: '',
+      location: '',
+      job_year_duration: '',
+      highlights: '',
+    }]);
+  };
+
+  const handleJobFormChange = (event, index) => {
+    const { name, value } = event.target;
+    const list = [...jobExperience];
+    list[index][name] = value;
+    setJobExperience(list);
+  };
+
   return (
     <div>
       <NavBar />
@@ -80,26 +106,14 @@ export default function App() {
         <FormUserProfile userProfileSubmit={userProfileSubmit} />
         <FormEducation educationHistorySubmit={educationHistorySubmit} educationHistory={educationHistory} handleEducationFormChange={handleEducationFormChange} handleEducationFormAdd={handleEducationFormAdd} />
         <FormCareerSummary handleSummaryFormChange={handleSummaryFormChange} />
+        <FormExperience jobExperience={jobExperience} handleJobFormAdd={handleJobFormAdd} handleJobFormChange={handleJobFormChange} />
 
         <div className="row mt-4">
-          <h1>Resume Preview</h1>
+          <h1 className="mb-3">Resume Preview</h1>
           <div className="wrapper mt-lg-5">
             <ResumeSideBar userProfile={userProfile} educationHistory={educationHistory} />
 
-            <div className="main-wrapper">
-
-              <section className="section summary-section">
-                <h2 className="section-title">
-                  <span className="icon-holder"><i className="fas fa-user" /></span>
-                  Career Profile
-                </h2>
-                <div className="summary">
-                  <p>
-                    {careerSummary}
-                  </p>
-                </div>
-              </section>
-            </div>
+            <ResumeMainSection careerSummary={careerSummary} jobExperience={jobExperience} />
           </div>
         </div>
       </div>
