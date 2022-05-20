@@ -27,10 +27,6 @@ export default function FormEducation({
           <div>
             <button className="btn btn-secondary mb-2" type="button" onClick={handleEducationFormAdd}>Add another education entry</button>
           </div>
-
-          <div>
-            <button className="btn btn-secondary mb-2" type="submit">Add Education</button>
-          </div>
         </form>
       </div>
 
