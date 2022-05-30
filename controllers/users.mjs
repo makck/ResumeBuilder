@@ -12,6 +12,7 @@ export default function initUsersController(db) {
         first_name, last_name, email, github_account, linkedin, mobile_number, profile_image, created_at, updated_at,
       });
 
+      res.cookie('userId', newUser.id);
       res.send({ newUser });
     } catch (error) {
       console.log(error);
