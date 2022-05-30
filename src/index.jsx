@@ -1,5 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 import './styles.scss';
 
 import App from './App.jsx';
@@ -14,4 +15,8 @@ document.body.appendChild(rootElement);
 const root = createRoot(rootElement);
 
 // Render React app in the React root element
-root.render(<App />);
+root.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+);

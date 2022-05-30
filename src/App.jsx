@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 
 import axios from 'axios';
+import {
+  BrowserRouter, Routes,
+  Route,
+  Link, useNavigate,
+} from 'react-router-dom';
+
 import NavBar from './components/NavBar.jsx';
 // User form components
 import FormUserProfile from './components/FormUserProfile.jsx';
@@ -9,8 +15,7 @@ import FormCareerSummary from './components/FormCareerSummary.jsx';
 import FormExperience from './components/FormExperience.jsx';
 
 // Reusme rendering components
-import ResumeSideBar from './components/ResumeSideBar.jsx';
-import ResumeMainSection from './components/ResumeMainSection.jsx';
+import ResumePreview from './components/ResumePreview.jsx';
 
 export default function App() {
   // User Profile
@@ -130,20 +135,23 @@ export default function App() {
     <div>
       <NavBar />
       <div className="container">
-        <FormUserProfile userProfileSubmit={userProfileSubmit} createUser={createUser} />
-        <FormEducation educationHistorySubmit={educationHistorySubmit} educationHistory={educationHistory} handleEducationFormChange={handleEducationFormChange} handleEducationFormAdd={handleEducationFormAdd} />
-        <FormCareerSummary handleSummaryFormChange={handleSummaryFormChange} />
-        <FormExperience jobExperience={jobExperience} handleJobFormAdd={handleJobFormAdd} handleJobFormChange={handleJobFormChange} />
+        <Routes>
+          <Route
+            path="/"
+            element={(
+              <>
+                <FormUserProfile userProfileSubmit={userProfileSubmit} createUser={createUser} />
+                {' '}
+                <FormEducation educationHistorySubmit={educationHistorySubmit} educationHistory={educationHistory} handleEducationFormChange={handleEducationFormChange} handleEducationFormAdd={handleEducationFormAdd} />
+                <FormCareerSummary handleSummaryFormChange={handleSummaryFormChange} />
+                <FormExperience jobExperience={jobExperience} handleJobFormAdd={handleJobFormAdd} handleJobFormChange={handleJobFormChange} />
 
-        <div className="row mt-4">
-          <h1 className="col mb-3">Resume Preview</h1>
-          <button className="btn btn-warning col-3 mb-4" type="button" onClick={createResume}>Save Resume</button>
-          <div className="wrapper mt-lg-5">
-            <ResumeSideBar userProfile={userProfile} educationHistory={educationHistory} />
+                <ResumePreview createResume={createResume} userProfile={userProfile} educationHistory={educationHistory} careerSummary={careerSummary} jobExperience={jobExperience} />
+              </>
+)}
+          />
+        </Routes>
 
-            <ResumeMainSection careerSummary={careerSummary} jobExperience={jobExperience} />
-          </div>
-        </div>
       </div>
     </div>
   );
