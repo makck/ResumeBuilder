@@ -38,8 +38,8 @@ db.User = initUserModel(sequelize, Sequelize.DataTypes);
 db.Resume = initResumeModel(sequelize, Sequelize.DataTypes);
 db.Industry = initIndustryModel(sequelize, Sequelize.DataTypes);
 
-db.User.belongsTo(db.Resume);
-db.Resume.hasMany(db.User);
+db.User.hasMany(db.Resume);
+db.Resume.belongsTo(db.User);
 
 db.Resume.belongsToMany(db.Industry, { through: 'resumes_industries' });
 db.Industry.belongsToMany(db.Resume, { through: 'resumes_industries' });
