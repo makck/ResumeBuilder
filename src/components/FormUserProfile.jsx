@@ -1,9 +1,10 @@
 import React from 'react';
 
-export default function UserProfileForm({ userProfileSubmit }) {
+export default function UserProfileForm({ userProfileSubmit, createUser }) {
   return (
     <div className="row mt-4">
-      <h1 className="page-title">User Profile</h1>
+      <h1 className="page-title col mb-3">User Profile</h1>
+      <button className="btn btn-warning col-3 mb-4" type="button" onClick={createUser}>Save User Profile</button>
 
       <div>
         <form className="form-inline" onSubmit={userProfileSubmit}>
