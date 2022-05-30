@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import axios from 'axios';
 import NavBar from './components/NavBar.jsx';
 // User form components
 import FormUserProfile from './components/FormUserProfile.jsx';
@@ -99,17 +100,32 @@ export default function App() {
     setJobExperience(list);
   };
 
+  const createUser = () => {
+    axios.post('/create-user', {
+      first_name: userProfile.first_name,
+      last_name: userProfile.last_name,
+      email: userProfile.email,
+      github_account: userProfile.github_account,
+      linkedin: userProfile.linkedin,
+      mobile_number: userProfile.mobile_number,
+    })
+      .then((result) => {
+        console.log(result);
+      });
+  };
+
   return (
     <div>
       <NavBar />
       <div className="container">
-        <FormUserProfile userProfileSubmit={userProfileSubmit} />
+        <FormUserProfile userProfileSubmit={userProfileSubmit} createUser={createUser} />
         <FormEducation educationHistorySubmit={educationHistorySubmit} educationHistory={educationHistory} handleEducationFormChange={handleEducationFormChange} handleEducationFormAdd={handleEducationFormAdd} />
         <FormCareerSummary handleSummaryFormChange={handleSummaryFormChange} />
         <FormExperience jobExperience={jobExperience} handleJobFormAdd={handleJobFormAdd} handleJobFormChange={handleJobFormChange} />
 
         <div className="row mt-4">
-          <h1 className="mb-3">Resume Preview</h1>
+          <h1 className="col mb-3">Resume Preview</h1>
+          <button className="btn btn-warning col-3 mb-4" type="button">Save Resume</button>
           <div className="wrapper mt-lg-5">
             <ResumeSideBar userProfile={userProfile} educationHistory={educationHistory} />
 
