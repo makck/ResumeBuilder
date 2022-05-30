@@ -1,11 +1,11 @@
 import React from 'react';
 
-export default function ResumeSideBar({ userProfile, educationHistory }) {
+export default function ResumeSideBar({ userProfile, educationHistory, profilePicture }) {
   return (
 
     <div className="sidebar-wrapper">
       <div className="profile-container">
-        <img className="profile" src="assets/images/profile.png" alt="" />
+        <img className="profile" src={profilePicture} alt="" />
         <h1 className="name">
           {userProfile.first_name}
           {' '}
