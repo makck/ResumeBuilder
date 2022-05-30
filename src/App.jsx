@@ -114,6 +114,18 @@ export default function App() {
       });
   };
 
+  const createResume = () => {
+    const inputData = {
+      education: educationHistory,
+      summary: careerSummary,
+      experience: jobExperience,
+    };
+    axios.post('/create-resume', inputData)
+      .then((result) => {
+        console.log(result);
+      });
+  };
+
   return (
     <div>
       <NavBar />
@@ -125,7 +137,7 @@ export default function App() {
 
         <div className="row mt-4">
           <h1 className="col mb-3">Resume Preview</h1>
-          <button className="btn btn-warning col-3 mb-4" type="button">Save Resume</button>
+          <button className="btn btn-warning col-3 mb-4" type="button" onClick={createResume}>Save Resume</button>
           <div className="wrapper mt-lg-5">
             <ResumeSideBar userProfile={userProfile} educationHistory={educationHistory} />
 
