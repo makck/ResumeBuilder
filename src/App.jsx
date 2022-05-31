@@ -18,6 +18,7 @@ import FormExperience from './components/FormExperience.jsx';
 import ResumePreview from './components/ResumePreview.jsx';
 
 import CollectionsView from './components/Collections.jsx';
+import ResumeView from './components/ResumeView.jsx';
 
 export default function App() {
   // User Profile
@@ -154,6 +155,7 @@ export default function App() {
             )}
             />
             <Route path="/collections" element={<CollectionsView />} />
+            <Route path="/resume/:resumeId" element={<ResumeView />} />
           </Routes>
         </BrowserRouter>
       </div>
