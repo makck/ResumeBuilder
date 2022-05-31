@@ -14,6 +14,8 @@ export default function routes(app) {
 
   app.get('/collection-list', ResumesController.getCollection);
 
+  app.get('/get/resume/:id', ResumesController.getResume);
+
   app.get('/*', (request, response) => {
     response.sendFile(resolve('dist', 'main.html'));
   });
