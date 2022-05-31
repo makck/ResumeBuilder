@@ -12,7 +12,9 @@ export default function routes(app) {
 
   app.post('/create-resume', ResumesController.createResume);
 
-  app.get('/', (request, response) => {
+  app.get('/collection-list', ResumesController.getCollection);
+
+  app.get('/*', (request, response) => {
     response.sendFile(resolve('dist', 'main.html'));
   });
 }
