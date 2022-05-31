@@ -1,6 +1,5 @@
 export default function initResumesController(db) {
   const createResume = async (req, res) => {
-    console.log('this is the req body', req.body);
     const inputData = req.body;
     const { userId } = req.cookies;
     try {
@@ -17,5 +16,15 @@ export default function initResumesController(db) {
     }
   };
 
-  return { createResume };
+  const getCollection = async (req, res) => {
+    await db.Resume.findAll()
+      .then((result) => {
+        res.send(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  return { createResume, getCollection };
 }
