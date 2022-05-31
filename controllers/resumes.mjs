@@ -26,5 +26,23 @@ export default function initResumesController(db) {
       });
   };
 
-  return { createResume, getCollection };
+  const getResume = async (req, res) => {
+    await db.Resume.findOne({
+      where: {
+        id: req.params.id,
+      },
+      include: {
+        model: db.User,
+      },
+    })
+      .then((result) => {
+        res.send(result);
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  return { createResume, getCollection, getResume };
 }
