@@ -17,11 +17,13 @@ import FormExperience from './components/FormExperience.jsx';
 // Reusme rendering components
 import ResumePreview from './components/ResumePreview.jsx';
 
+import CollectionsView from './components/Collections.jsx';
+
 export default function App() {
   // User Profile
   const [userProfile, setUserProfile] = useState({
-    first_name: 'test',
-    last_name: 'test2',
+    first_name: '',
+    last_name: '',
     role: '',
     email: '',
     linkedin: '',
@@ -135,23 +137,25 @@ export default function App() {
     <div>
       <NavBar />
       <div className="container">
-        <Routes>
-          <Route
-            path="/"
-            element={(
-              <>
-                <FormUserProfile userProfileSubmit={userProfileSubmit} createUser={createUser} />
-                {' '}
-                <FormEducation educationHistorySubmit={educationHistorySubmit} educationHistory={educationHistory} handleEducationFormChange={handleEducationFormChange} handleEducationFormAdd={handleEducationFormAdd} />
-                <FormCareerSummary handleSummaryFormChange={handleSummaryFormChange} />
-                <FormExperience jobExperience={jobExperience} handleJobFormAdd={handleJobFormAdd} handleJobFormChange={handleJobFormChange} />
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="/"
+              element={(
+                <>
+                  <FormUserProfile userProfileSubmit={userProfileSubmit} createUser={createUser} />
+                  {' '}
+                  <FormEducation educationHistorySubmit={educationHistorySubmit} educationHistory={educationHistory} handleEducationFormChange={handleEducationFormChange} handleEducationFormAdd={handleEducationFormAdd} />
+                  <FormCareerSummary handleSummaryFormChange={handleSummaryFormChange} />
+                  <FormExperience jobExperience={jobExperience} handleJobFormAdd={handleJobFormAdd} handleJobFormChange={handleJobFormChange} />
 
-                <ResumePreview createResume={createResume} userProfile={userProfile} educationHistory={educationHistory} careerSummary={careerSummary} jobExperience={jobExperience} />
-              </>
-)}
-          />
-        </Routes>
-
+                  <ResumePreview createResume={createResume} userProfile={userProfile} educationHistory={educationHistory} careerSummary={careerSummary} jobExperience={jobExperience} />
+                </>
+            )}
+            />
+            <Route path="/collections" element={<CollectionsView />} />
+          </Routes>
+        </BrowserRouter>
       </div>
     </div>
   );
