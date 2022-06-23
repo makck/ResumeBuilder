@@ -5,7 +5,7 @@ export default function UserProfileForm({ userProfileSubmit, createUser }) {
     <div className="row mt-4">
       <h1 className="page-title col mb-3">User Profile</h1>
       <button className="btn btn-warning col-3 mb-4" type="button" onClick={createUser}>Save User Profile</button>
-
+      {/* Same as in FormEducation.jsx. Could use some kind of function to render all these repetitive elements. */}
       <div>
         <form className="form-inline" onSubmit={userProfileSubmit}>
           <div className="row">

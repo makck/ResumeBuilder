@@ -20,6 +20,21 @@ import ResumePreview from './components/ResumePreview.jsx';
 import CollectionsView from './components/Collections.jsx';
 import ResumeView from './components/ResumeView.jsx';
 
+// we could use a default state variable here if we would like to and use it below
+/*
+
+const defaultUserProfileState = {
+    first_name: '',
+    last_name: '',
+    role: '',
+    email: '',
+    linkedin: '',
+    github_account: '',
+    mobile_number: 0,
+  }
+
+*/
+
 export default function App() {
   // User Profile
   const [userProfile, setUserProfile] = useState({
@@ -48,6 +63,7 @@ export default function App() {
 
   // Education History
 
+  // ideally we always define all state at the top of the component
   const [educationHistory, setEducationHistory] = useState([{
     qualification: '',
     institution: '',
@@ -75,6 +91,7 @@ export default function App() {
   };
 
   // Career Summary
+  // ideally we always define all state at the top of the component
   const [careerSummary, setCareerSummary] = useState('');
 
   const handleSummaryFormChange = (event, index) => {
@@ -85,6 +102,7 @@ export default function App() {
   };
 
   // Job Experience
+  // ideally we always define all state at the top of the component
   const [jobExperience, setJobExperience] = useState([{
     job_title: '',
     location: '',
@@ -110,6 +128,7 @@ export default function App() {
 
   const createUser = () => {
     axios.post('/create-user', {
+      // if this data is equivalent to the state, why not just use userProfile as the data object?
       first_name: userProfile.first_name,
       last_name: userProfile.last_name,
       email: userProfile.email,
@@ -142,6 +161,7 @@ export default function App() {
           <Routes>
             <Route
               path="/"
+              // i think you could create a new component for this element, would probably require some refactoring though!
               element={(
                 <>
                   <FormUserProfile userProfileSubmit={userProfileSubmit} createUser={createUser} />
@@ -162,3 +182,6 @@ export default function App() {
     </div>
   );
 }
+
+// I think you could create a Form folder, in which you keep the form related components. Same with Resume.
+// Doing that, you will have a better overview, clearer state handling and overall a nicer architecture on your React app.

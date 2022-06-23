@@ -27,7 +27,22 @@ export default function ResumeView() {
       console.log(error);
     }
   };
-
+  // i think could just define the functionality of getResume within the effect, since you don't reuse that function anywhere else, but give the effect a name.
+  /* useEffect(function getResume() {
+        try {
+          axios.get(`/get/resume/${resumeId}`)
+            .then((result) => {
+              setUserProfile(result.data.user);
+              setEducationHistory(result.data.resume_details.education);
+              setCareerSummary(result.data.resume_details.summary);
+              setJobExperience(result.data.resume_details.experience);
+              console.log('this is it', result.data);
+            });
+        } catch (error) {
+          console.log(error);
+        }
+    }, [])
+  */
   useEffect(() => { getResume(); }, []);
 
   return (
