@@ -6,6 +6,7 @@ export default function FormCareerSummary({ jobExperience, handleJobFormAdd, han
       <h1 className="page-title">Job Experience</h1>
 
       <div>
+        {/* Same as in FormEducation.jsx */}
         {jobExperience.map((entry, index) => (
           <div key={`jobExperience-${index}`} className="mb-4">
             <div className="row mb-3">

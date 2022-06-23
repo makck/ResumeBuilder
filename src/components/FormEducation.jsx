@@ -9,7 +9,7 @@ export default function FormEducation({
 
       <div>
         <form className="form-inline" onSubmit={educationHistorySubmit}>
-
+          {/* this here is repetitive code. We could probably utilize some kind of object to infer the name and placeholder here. Would need to think a bit better about the way we store our data */}
           {educationHistory.map((entry, index) => (
             <div key={`education-${index}`} className="row mb-3">
               <div className="col">

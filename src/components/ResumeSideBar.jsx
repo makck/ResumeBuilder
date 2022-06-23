@@ -18,14 +18,17 @@ export default function ResumeSideBar({ userProfile, educationHistory, profilePi
         <ul className="list-unstyled contact-list">
           <li className="email">
             <i className="fas fa-envelope" />
+            {/* Should not hardcode the email here */}
             <a href="mailto: yourname@email.com">{userProfile.email}</a>
           </li>
           <li className="phone">
             <i className="fas fa-phone" />
+            {/* hardcoding the phone number is not ideal I think */}
             <a href="tel:0123 456 789">{userProfile.mobile_number}</a>
           </li>
           <li className="linkedin">
             <i className="fab fa-linkedin-in" />
+            {/* Should properly seed data to get some actual links on here, even if they lead to a 404 */}
             <a href="#" target="_blank">{userProfile.linkedin}</a>
           </li>
           <li className="github">
